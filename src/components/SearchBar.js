@@ -12,6 +12,7 @@ class SearchBar extends Component {
     onEnter = (event) => {
         event.preventDefault()
         this.props.onSubmitInput(this.state.term)
+        this.setState({ term: '' })
     }
 
     render() {
