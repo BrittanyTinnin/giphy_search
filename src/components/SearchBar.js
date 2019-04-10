@@ -11,7 +11,6 @@ class SearchBar extends Component {
 
     onEnter = (event) => {
         event.preventDefault()
-        //TODO: make a call to callback from parent component
         this.props.onSubmitInput(this.state.term)
     }
 

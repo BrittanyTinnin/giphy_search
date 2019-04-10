@@ -1,10 +1,11 @@
 import React from 'react'
 import giphy from './api/giphy'
 import SearchBar from './components/SearchBar'
+import GiphyList from './components/GiphyList';
 
 
 class App extends React.Component {
-    //setup axios request to api based on search term
+    state = { giphyList: [] }
    
     onSubmitInput = async (term) => {
         const response = await giphy.get('/v1/gifs/search', {
@@ -15,13 +16,14 @@ class App extends React.Component {
         })
         .catch(err => console.log(err.response))
 
-        console.log(response)
+        this.setState({ giphyList: response.data.data })
     }
 
     render() {
         return (
         <div className="ui container" style={{ marginTop: '10px' }}>
             <SearchBar onSubmitInput={this.onSubmitInput} />
+            <GiphyList giphys={this.state.giphyList}/>
         </div>
         )
     }
