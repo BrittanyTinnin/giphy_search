@@ -1,0 +1,9 @@
+.giphy-item.item img {
+    max-width: 250px;
+}
+
+.giphy-item {
+    display: flex !important;
+    cursor: pointer;
+    align-items: center !important;
+}
