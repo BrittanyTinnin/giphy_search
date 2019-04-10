@@ -22,7 +22,7 @@ class App extends React.Component {
         })
         .catch(err => console.log(err.response))
 
-        this.setState({ giphyList: response.data.data })
+        this.setState({ giphyList: response.data.data, selectedGiphy: response.data.data[0] })
     }
 
     onGiphySelect = (giphy) => {
