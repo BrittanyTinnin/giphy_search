@@ -7,17 +7,22 @@ import GiphyDetail from './components/GiphyDetail'
 
 
 class App extends React.Component {
-    state = { giphyList: [], selectedGiphy: null }
-
+    constructor(props) {
+        super(props)
+        this.state = { giphyList: [], selectedGiphy: null }
+    }
+    
     componentDidMount() {
         this.onSubmitInput('babies')
     }
+    
+   
    
     onSubmitInput = async (term) => {
         const response = await giphy.get('/v1/gifs/search', {
             params: {
                 q: term,
-                limit: 5
+                limit: 10
             }
         })
         .catch(err => console.log(err.response))
@@ -36,7 +41,7 @@ class App extends React.Component {
             <div className="ui grid">
                 <div className="ui row">
                     <div className="eleven wide column">
-                        <GiphyDetail giphy={this.state.selectedGiphy} />
+                        <GiphyDetail giphy={this.state.selectedGiphy}  />
                     </div>
                     <div className="five wide column">
                         <GiphyList giphys={this.state.giphyList} onGiphySelect={this.onGiphySelect} />

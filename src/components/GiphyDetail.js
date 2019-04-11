@@ -1,18 +1,27 @@
 import React from 'react'
 
-const GiphyDetail = (props) => {
-    console.log(props)
-    if (!props.giphy) {
-        return <div>Loading...</div>
-    }
+class GiphyDetail extends React.Component {
+        
+        render() {
+        if (!this.props.giphy) {
+            return (
+            <div className="ui active dimmer">            
+                <div className="ui text loader">
+                    Loading...
+                </div>
+            </div>
+            )
+        }
 
-    return (
-        <div>
-            <img className="ui image" src={props.giphy.images.original.url} alt={props.giphy.title} />
-        </div>
-    )
+       
+
+        return (
+            <div ref={this.props.findDom} className="text">
+                <img className="ui image" src={this.props.giphy.images.original.url} alt={this.props.giphy.title} />
+            </div>
+        )
+    }
 }
 
 export default GiphyDetail
 
-// src={props.giphy.images.original.url} alt={props.giphy.title}
